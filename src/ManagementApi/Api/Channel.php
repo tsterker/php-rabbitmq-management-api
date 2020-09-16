@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
+use TSterker\RabbitMq\Helper;;
 
 /**
  * Channel
@@ -29,6 +29,6 @@ class Channel extends AbstractApi
      */
     public function get($channel)
     {
-        return $this->client->send(uri_template('/api/channels/{channel}', ['channel' => $channel]));
+        return $this->client->send(Helper::uri_template('/api/channels/{channel}', ['channel' => $channel]));
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace Markup\RabbitMq;
+namespace TSterker\RabbitMq;
 
-use function GuzzleHttp\uri_template;
-use Markup\RabbitMq\ManagementApi\Api;
-use Markup\RabbitMq\ManagementApi\Client as RabbitMqApiClient;
+use TSterker\RabbitMq\Helper;;
+
+use TSterker\RabbitMq\ManagementApi\Api;
+use TSterker\RabbitMq\ManagementApi\Client as RabbitMqApiClient;
 
 /**
  * Factory class for API Endpoints.
@@ -38,7 +39,7 @@ class ApiFactory
      */
     public function alivenessTest($vhost)
     {
-        return $this->client->send(uri_template('/api/aliveness-test/{vhost}', ['vhost' => $vhost]));
+        return $this->client->send(Helper::uri_template('/api/aliveness-test/{vhost}', ['vhost' => $vhost]));
     }
 
     /**

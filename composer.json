@@ -1,8 +1,8 @@
 {
-    "name": "markup/rabbitmq-management-api",
+    "name": "tsterker/rabbitmq-management-api",
     "type": "library",
     "description": "An object oriented wrapper for the RabbitMQ Management HTTP Api",
-    "homepage": "https://github.com/markup/php-rabbitmq-management-api",
+    "homepage": "https://github.com/tsterker/php-rabbitmq-management-api",
     "keywords": ["rest", "message queue", "rabbitmq"],
     "license": "MIT",
     "authors": [
@@ -15,15 +15,21 @@
             "name": "Calum Brodie",
             "email": "calum@usemarkup.com",
             "homepage": "https://github.com/calumbrodie"
+        },
+        {
+            "name": "Tim Sterker",
+            "email": "tsterker@gmail.com",
+            "homepage": "https://github.com/tsterker"
         }
     ],
     "require": {
         "php": ">=5.6",
-        "guzzlehttp/guzzle": "~6.1"
+        "guzzlehttp/guzzle": "~6.1 || ^7.0.1",
+        "guzzlehttp/uri-template": "^0.2.0"
     },
     "autoload": {
         "psr-4": {
-            "Markup\\RabbitMq\\": [
+            "TSterker\\RabbitMq\\": [
                 "src/"
             ]
         }

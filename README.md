@@ -13,7 +13,7 @@ Installation
 Installable through composer via:
 
 ```bash
-$ composer require markup/rabbitmq-management-api
+$ composer require tsterker/rabbitmq-management-api
 ```
 
 Basic Usage
@@ -22,7 +22,7 @@ Basic Usage
 ```php
 <?php
 
-use Markup\RabbitMq\ManagementApi\Client;
+use TSterker\RabbitMq\ManagementApi\Client;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

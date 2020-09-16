@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use Markup\RabbitMq\ManagementApi\Client;
+use TSterker\RabbitMq\ManagementApi\Client;
 
 /**
  * @author Richard Fullmer <richard.fullmer@opensoftdev.com>

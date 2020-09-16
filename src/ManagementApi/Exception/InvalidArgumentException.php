@@ -1,6 +1,6 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Exception;
+namespace TSterker\RabbitMq\ManagementApi\Exception;
 
 /**
  * @author Richard Fullmer <richard.fullmer@opensoftdev.com>

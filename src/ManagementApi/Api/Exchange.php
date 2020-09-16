@@ -1,9 +1,9 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
-use Markup\RabbitMq\ManagementApi\Exception\InvalidArgumentException;
+use TSterker\RabbitMq\Helper;
+use TSterker\RabbitMq\ManagementApi\Exception\InvalidArgumentException;
 
 /**
  * Exchange
@@ -25,7 +25,7 @@ class Exchange extends AbstractApi
     public function all($vhost = null)
     {
         if ($vhost) {
-            return $this->client->send(uri_template('/api/exchanges/{vhost}', ['vhost' => $vhost]));
+            return $this->client->send(Helper::uri_template('/api/exchanges/{vhost}', ['vhost' => $vhost]));
         } else {
             return $this->client->send('/api/exchanges');
         }
@@ -40,7 +40,7 @@ class Exchange extends AbstractApi
      */
     public function get($vhost, $name)
     {
-        return $this->client->send(uri_template('/api/exchanges/{vhost}/{name}', ['vhost' => $vhost, 'name' => $name]));
+        return $this->client->send(Helper::uri_template('/api/exchanges/{vhost}/{name}', ['vhost' => $vhost, 'name' => $name]));
     }
 
     /**
@@ -60,7 +60,7 @@ class Exchange extends AbstractApi
      * @param  string                                                     $name
      * @param  array                                                      $exchange
      * @return array
-     * @throws \Markup\RabbitMq\ManagementApi\Exception\InvalidArgumentException
+     * @throws \TSterker\RabbitMq\ManagementApi\Exception\InvalidArgumentException
      */
     public function create($vhost, $name, array $exchange)
     {
@@ -69,7 +69,7 @@ class Exchange extends AbstractApi
         }
 
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/exchanges/{vhost}/{name}',
                 [
                     'vhost' => $vhost,
@@ -92,7 +92,7 @@ class Exchange extends AbstractApi
     public function delete($vhost, $name)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/exchanges/{vhost}/{name}',
                 [
                     'vhost' => $vhost,
@@ -113,7 +113,7 @@ class Exchange extends AbstractApi
     public function sourceBindings($vhost, $name)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/exchanges/{vhost}/{name}/bindings/source',
                 [
                     'vhost' => $vhost,
@@ -133,7 +133,7 @@ class Exchange extends AbstractApi
     public function destinationBindings($vhost, $name)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/exchanges/{vhost}/{name}/bindings/destination',
                 [
                     'vhost' => $vhost,
@@ -184,7 +184,7 @@ class Exchange extends AbstractApi
         }
 
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/exchanges/{vhost}/{name}/publish',
                 [
                     'vhost' => $vhost,

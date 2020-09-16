@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
+use TSterker\RabbitMq\Helper;;
 
 /**
  * Parameter
@@ -33,7 +33,7 @@ class Parameter extends AbstractApi
     {
         if ($vhost && $name) {
             return $this->client->send(
-                uri_template(
+                Helper::uri_template(
                     '/api/parameters/{component}/{vhost}/{name}',
                     [
                         'component' => $component,
@@ -44,10 +44,10 @@ class Parameter extends AbstractApi
             );
         } elseif ($vhost) {
             return $this->client->send(
-                uri_template('/api/parameters/{component}/{vhost}', ['component' => $component, 'vhost' => $vhost])
+                Helper::uri_template('/api/parameters/{component}/{vhost}', ['component' => $component, 'vhost' => $vhost])
             );
         } else {
-            return $this->client->send(uri_template('/api/parameters/{component}', ['component' => $component]));
+            return $this->client->send(Helper::uri_template('/api/parameters/{component}', ['component' => $component]));
         }
     }
 
@@ -70,7 +70,7 @@ class Parameter extends AbstractApi
     public function create($component, $vhost, $name, array $parameter)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/parameters/{component}/{vhost}/{name}',
                 [
                     'component' => $component,
@@ -95,7 +95,7 @@ class Parameter extends AbstractApi
     public function delete($component, $vhost, $name)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/parameters/{component}/{vhost}/{name}',
                 [
                     'component' => $component,

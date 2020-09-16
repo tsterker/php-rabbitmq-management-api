@@ -1,9 +1,10 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
-use Markup\RabbitMq\ManagementApi\Exception\InvalidArgumentException;
+use TSterker\RabbitMq\Helper;;
+
+use TSterker\RabbitMq\ManagementApi\Exception\InvalidArgumentException;
 
 /**
  * Permission
@@ -31,7 +32,7 @@ class Permission extends AbstractApi
      */
     public function get($vhost, $user)
     {
-        return $this->client->send(uri_template('/api/permissions/{vhost}/{user}', ['vhost' => $vhost, 'user' => $user]));
+        return $this->client->send(Helper::uri_template('/api/permissions/{vhost}/{user}', ['vhost' => $vhost, 'user' => $user]));
     }
 
     /**
@@ -54,7 +55,7 @@ class Permission extends AbstractApi
         }
 
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/permissions/{vhost}/{user}',
                 [
                     'vhost' => $vhost,
@@ -77,7 +78,7 @@ class Permission extends AbstractApi
     public function delete($vhost, $user)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/permissions/{vhost}/{user}',
                 [
                     'vhost' => $vhost,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi;
+namespace TSterker\RabbitMq\ManagementApi;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Request;

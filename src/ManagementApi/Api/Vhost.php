@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
+use TSterker\RabbitMq\Helper;;
 
 /**
  * Vhost
@@ -29,7 +29,7 @@ class Vhost extends AbstractApi
      */
     public function get($name)
     {
-        return $this->client->send(uri_template('/api/vhosts/{name}', ['name' => $name]));
+        return $this->client->send(Helper::uri_template('/api/vhosts/{name}', ['name' => $name]));
     }
 
     /**
@@ -40,7 +40,7 @@ class Vhost extends AbstractApi
      */
     public function create($name)
     {
-        return $this->client->send(uri_template('/api/vhosts/{name}', ['name' => $name]), 'PUT');
+        return $this->client->send(Helper::uri_template('/api/vhosts/{name}', ['name' => $name]), 'PUT');
     }
 
     /**
@@ -51,7 +51,7 @@ class Vhost extends AbstractApi
      */
     public function delete($name)
     {
-        return $this->client->send(uri_template('/api/vhosts/{name}', ['name' => $name]), 'DELETE');
+        return $this->client->send(Helper::uri_template('/api/vhosts/{name}', ['name' => $name]), 'DELETE');
     }
 
     /**
@@ -62,6 +62,6 @@ class Vhost extends AbstractApi
      */
     public function permissions($name)
     {
-        return $this->client->send(uri_template('/api/vhosts/{name}/permissions', ['name' => $name]));
+        return $this->client->send(Helper::uri_template('/api/vhosts/{name}/permissions', ['name' => $name]));
     }
 }

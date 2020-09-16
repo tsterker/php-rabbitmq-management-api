@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
+use TSterker\RabbitMq\Helper;;
 
 /**
  * Policy
@@ -35,10 +35,10 @@ class Policy extends AbstractApi
     public function get($vhost, $name = null)
     {
         if ($name) {
-            return $this->client->send(uri_template('/api/policies/{vhost}/{name}', ['vhost' => $vhost, 'name' => $name]));
+            return $this->client->send(Helper::uri_template('/api/policies/{vhost}/{name}', ['vhost' => $vhost, 'name' => $name]));
         }
 
-        return $this->client->send(uri_template('/api/policies/{vhost}', ['vhost' => $vhost]));
+        return $this->client->send(Helper::uri_template('/api/policies/{vhost}', ['vhost' => $vhost]));
     }
 
     /**
@@ -54,7 +54,7 @@ class Policy extends AbstractApi
     public function create($vhost, $name, array $policy)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/policies/{vhost}/{name}',
                 [
                     'vhost' => $vhost,
@@ -77,7 +77,7 @@ class Policy extends AbstractApi
     public function delete($vhost, $name)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/policies/{vhost}/{name}',
                 [
                     'vhost' => $vhost,

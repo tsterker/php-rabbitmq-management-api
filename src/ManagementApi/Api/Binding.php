@@ -1,8 +1,8 @@
 <?php
 
-namespace Markup\RabbitMq\ManagementApi\Api;
+namespace TSterker\RabbitMq\ManagementApi\Api;
 
-use function GuzzleHttp\uri_template;
+use TSterker\RabbitMq\Helper;;
 
 /**
  * @author Richard Fullmer <richard.fullmer@opensoftdev.com>
@@ -22,7 +22,7 @@ class Binding extends AbstractApi
     public function all($vhost = null)
     {
         if ($vhost) {
-            return $this->client->send(uri_template('/api/bindings/{vhost}', ['vhost' => $vhost]));
+            return $this->client->send(Helper::uri_template('/api/bindings/{vhost}', ['vhost' => $vhost]));
         } else {
             return $this->client->send('/api/bindings');
         }
@@ -40,7 +40,7 @@ class Binding extends AbstractApi
     public function binding($vhost, $exchange, $queue)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/bindings/{vhost}/e/{exchange}/q/{queue}',
                 [
                     'vhost' => $vhost,
@@ -82,7 +82,7 @@ class Binding extends AbstractApi
         }
 
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/bindings/{vhost}/e/{exchange}/q/{queue}',
                 [
                     'vhost' => $vhost,
@@ -109,7 +109,7 @@ class Binding extends AbstractApi
     public function get($vhost, $exchange, $queue, $props)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/bindings/{vhost}/e/{exchange}/q/{queue}/{props}',
                 [
                     'vhost' => $vhost,
@@ -133,7 +133,7 @@ class Binding extends AbstractApi
     public function delete($vhost, $exchange, $queue, $props)
     {
         return $this->client->send(
-            uri_template(
+            Helper::uri_template(
                 '/api/bindings/{vhost}/e/{exchange}/q/{queue}/{props}',
                 [
                     'vhost' => $vhost,
