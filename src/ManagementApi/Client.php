@@ -42,12 +42,33 @@ class Client
      */
     const BASEURL_DEFAULT = 'http://localhost:15672';
 
+    /**
+     * The default connect timeout.
+     *
+     * @var int
+     */
+    const CONNECT_TIMEOUT = 10;
+
+    /**
+     * The default transport timeout.
+     *
+     * @var int
+     */
+    const TIMEOUT = 15;
+
     public function __construct(
         $baseUrl = self::BASEURL_DEFAULT,
         $username = self::USERNAME_DEFAULT,
-        $password = self::PASSWORD_DEFAULT
+        $password = self::PASSWORD_DEFAULT,
+        array $guzzleOptions = []
     ) {
-        $this->client = new GuzzleClient(['base_uri' => $baseUrl]);
+        $config = array_merge([
+            'base_uri' => $baseUrl,
+            'connect_timeout' => self::CONNECT_TIMEOUT,
+            'timeout' => self::TIMEOUT,
+        ], $guzzleOptions);
+
+        $this->client = new GuzzleClient($config);
         $this->username = $username;
         $this->password = $password;
     }
